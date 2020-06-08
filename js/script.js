@@ -7,6 +7,11 @@ snake[0] = {
   y: 8 * box
 }
 
+let food = { // cria a comidinha em lugar aleatório
+  x: Math.floor(Math.random() * 15 + 1) * box,
+  y: Math.floor(Math.random() * 15 + 1) * box
+}
+
 function criarBG() { // define o canvas
   context.fillStyle = "lightgreen"; // cor do canvas
   context.fillRect(0, 0, 16 * box, 16 * box); // Desenha o canvas. Posições: x, y, altura, largura
@@ -19,8 +24,14 @@ function criarCobrinha() { // cria a cobrinha
   }
 }
 
+function drawFood() { // desenha a comidinha
+  context.fillStyle = "red";
+  context.fillRect(food.x, food.y, box, box);
+}
+
 // aplica as funções
 criarBG();
 criarCobrinha();
+drawFood();
 
 let jogo = setInterval(iniciarJogo, 100);
